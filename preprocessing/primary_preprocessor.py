@@ -1,5 +1,9 @@
 import re
-from loco_nlp.preprocessing.space_cleaner import clean_spaces
+
+def clean_spaces(text, replacements=''):
+    replacer = lambda text : re.sub("[\ \t\n]+", ' ', text).strip()
+    return list(map(replacer, text)) if type(text) is list else replacer(text)
+
 
 all_punct = "/-'#$%\'()*+-/:/.!?,;<=>@[\\]^_`{|}~`" + '""“”’' + '∞θ÷α•−β∅³π‘₹´°£€\×™√²—–&।'
 
